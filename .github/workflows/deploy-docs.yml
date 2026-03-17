@@ -1,10 +1,10 @@
 name: 部署文档
 
 on:
-  # 每当推送到 main 分支时触发部署
+  # 每当推送到 master 分支时触发部署
   push:
     branches:
-      - main
+      - master
   # 允许手动触发部署
   workflow_dispatch:
 
