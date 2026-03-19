@@ -137,6 +137,9 @@ export default hopeTheme({
     imgSize: true,
     include: true,
     mark: true,
+    math: {
+      type: "katex", // 或 'mathjax'
+    },
     plantuml: true,
     spoiler: true,
     stylize: [
