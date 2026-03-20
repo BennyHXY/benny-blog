@@ -12,28 +12,28 @@ export const zhNavbar = navbar([
         text: "python基础",
         icon: "",
 
-        prefix: "/",
+        prefix: "zh/posts/learn-python/",
         children: [
           {
             text: "虚拟环境",
             icon: "",
-            link: "",
+            link: "-",
           },
           {
             text: "交互模式",
             icon: "",
-            link: "",
+            link: "-",
           },
-          { text: "数据类型", icon: "", link: "" },
-          { text: "分支/循环/函数", icon: "", link: "" },
-          { text: "面向对象", icon: "", link: "" },
+          { text: "数据类型", icon: "", link: "-" },
+          { text: "分支/循环/函数", icon: "", link: "python-control-flow" },
+          { text: "面向对象", icon: "", link: "python-class" },
         ],
       },
       {
         text: "神经网络(理论篇)",
         icon: "",
 
-        prefix: "/",
+        prefix: "zh/posts/neural-theorem/",
         children: [
           {
             text: "多层感知机(MLP)",
@@ -53,7 +53,7 @@ export const zhNavbar = navbar([
         text: "神经网络(实践篇)",
         icon: "",
 
-        prefix: "/",
+        prefix: "zh/posts/neural-practical/",
         children: [
           {
             text: "数据集",
@@ -76,7 +76,14 @@ export const zhNavbar = navbar([
     text: "Web项目",
     icon: "",
     link: "",
-    children: ["音乐播放器", "题库"],
+    children: [
+      {
+        text: "音乐播放器",
+        // icon: "music",
+        link: "http://47.108.209.165/",
+      },
+      { text: "刷题网站(建设中)", link: "" },
+    ],
   },
   {
     text: "408统考",
@@ -86,6 +93,7 @@ export const zhNavbar = navbar([
   },
   {
     text: "算法竞赛",
+    activeMatch: "^/zh/posts/algorithm",
     icon: "",
     prefix: "zh/posts/algorithm/",
     link: "",
