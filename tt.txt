@@ -1,5 +1,5 @@
 //提交远程库
 
 git add .     
-git commit -m "修改了一些导航栏显示"                                                                                      
+git commit -m "添加了一张流程图的代码预览"                                                                                      
 git push origin master

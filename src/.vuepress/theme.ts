@@ -141,6 +141,7 @@ export default hopeTheme({
       type: "katex", // 或 'mathjax'
     },
     plantuml: true,
+    preview: true,
     flowchart: true,
     spoiler: true,
     stylize: [

@@ -26,6 +26,44 @@ tag:
 ## 分析
 
 解线性方程组的流程：
+<VPPreview>
+
+<template #code>
+
+```
+st=>start: 开始
+ed=>end: 结束
+ed1=>end: 线性方程有唯一解
+ed2=>end: 线性方程无解
+ed3=>end: 线性方程有多个解
+
+op1=>operation: 将线性方程组化为矩阵方程 Ax=b 的形式
+
+op2=>operation: 提取增广矩阵aug=[A b]
+
+op3=>operation: 对增广矩阵作行化简，得到阶梯形矩阵P
+op4=>operation: （存在等式0≠1）
+
+branch1=>condition: 前n列都为主元列
+
+branch2=>condition: 第n+1列为主元列
+
+
+
+st->op1
+op1->op2
+op2->op3
+
+op3->branch1
+
+branch1(yes,left)->ed1
+branch1(no, bottom)->branch2
+branch2(yes, right)->op4->ed2
+branch2(no)->ed3
+```
+
+</template>
+<template #content>
 
 ```flow
 st=>start: 开始
@@ -58,6 +96,10 @@ branch1(no, bottom)->branch2
 branch2(yes, right)->op4->ed2
 branch2(no)->ed3
 ```
+
+</template>
+
+</VPPreview>
 
 ## 代码
 
