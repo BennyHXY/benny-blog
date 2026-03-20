@@ -1,0 +1,5 @@
+//提交远程库
+
+git add .     
+git commit -m "增加了一篇关于线性方程组的题解"                                                                                      
+git push origin master
