@@ -26,6 +26,7 @@ tag:
 ## 分析
 
 解线性方程组的流程：
+
 <VPPreview>
 
 <template #code>
@@ -56,9 +57,9 @@ op2->op3
 
 op3->branch1
 
-branch1(yes,left)->ed1
-branch1(no, bottom)->branch2
-branch2(yes, right)->op4->ed2
+branch1(yes)->ed1
+branch1(no)->branch2
+branch2(yes)->op4->ed2
 branch2(no)->ed3
 ```
 
