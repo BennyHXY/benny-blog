@@ -14,17 +14,9 @@ export const zhNavbar = navbar([
 
         prefix: "zh/posts/learn-python/",
         children: [
-          {
-            text: "虚拟环境",
-            icon: "",
-            link: "-",
-          },
-          {
-            text: "交互模式",
-            icon: "",
-            link: "-",
-          },
-          { text: "数据类型", icon: "", link: "-" },
+          "虚拟环境",
+          "交互模式",
+          "数据类型",
           { text: "分支/循环/函数", icon: "", link: "python-control-flow" },
           { text: "面向对象", icon: "", link: "python-class" },
         ],
@@ -35,17 +27,9 @@ export const zhNavbar = navbar([
 
         prefix: "zh/posts/neural-theorem/",
         children: [
-          {
-            text: "多层感知机(MLP)",
-            icon: "",
-            link: "",
-          },
-          {
-            text: "参数定义",
-            icon: "",
-            link: "",
-          },
-          { text: "梯度下降", icon: "", link: "" },
+          "多层感知机(MLP)",
+          "参数定义",
+          "梯度下降",
           { text: " - ", icon: "", link: "" },
         ],
       },
@@ -55,19 +39,11 @@ export const zhNavbar = navbar([
 
         prefix: "zh/posts/neural-practical/",
         children: [
-          {
-            text: "数据集",
-            icon: "",
-            link: "",
-          },
-          {
-            text: "NumPy",
-            icon: "",
-            link: "",
-          },
-          { text: "pytorch", icon: "", link: "" },
-          { text: "matplotlib", icon: "", link: "" },
-          { text: "例子：手写数字识别", icon: "", link: "" },
+          "数据集",
+          "NumPy",
+          "pytorch",
+          "matplotlib",
+          "例子：手写数字识别",
         ],
       },
     ],
@@ -82,7 +58,7 @@ export const zhNavbar = navbar([
         // icon: "music",
         link: "http://47.108.209.165/",
       },
-      { text: "刷题网站(建设中)", link: "" },
+      "刷题网站(建设中)",
     ],
   },
   {
@@ -105,39 +81,48 @@ export const zhNavbar = navbar([
     prefix: "/zh/posts/article/",
     children: [
       {
-        text: "苹果",
-        icon: "pen-to-square",
-        prefix: "apple/",
+        text: "解题的过程",
+        prefix: "problem-solving/",
+        link: "",
         children: [
-          { text: "苹果1", icon: "pen-to-square", link: "1" },
-          { text: "苹果2", icon: "pen-to-square", link: "2" },
-          "3",
-          "4",
+          { text: "luogu", link: "" },
+          { text: "SICNU OJ", link: "" },
         ],
       },
-      {
-        text: "香蕉",
-        icon: "pen-to-square",
-        prefix: "banana/",
-        children: [
-          {
-            text: "香蕉 1",
-            icon: "pen-to-square",
-            link: "1",
-          },
-          {
-            text: "香蕉 2",
-            icon: "pen-to-square",
-            link: "2",
-          },
-          "3",
-          "4",
-        ],
-      },
-      { text: "樱桃", icon: "pen-to-square", link: "cherry" },
-      { text: "火龙果", icon: "pen-to-square", link: "dragonfruit" },
-      "tomato",
-      "strawberry",
+      // {
+      //   text: "苹果",
+      //   icon: "pen-to-square",
+      //   prefix: "apple/",
+      //   children: [
+      //     { text: "苹果1", icon: "pen-to-square", link: "1" },
+      //     { text: "苹果2", icon: "pen-to-square", link: "2" },
+      //     "3",
+      //     "4",
+      //   ],
+      // },
+      // {
+      //   text: "香蕉",
+      //   icon: "pen-to-square",
+      //   prefix: "banana/",
+      //   children: [
+      //     {
+      //       text: "香蕉 1",
+      //       icon: "pen-to-square",
+      //       link: "1",
+      //     },
+      //     {
+      //       text: "香蕉 2",
+      //       icon: "pen-to-square",
+      //       link: "2",
+      //     },
+      //     "3",
+      //     "4",
+      //   ],
+      // },
+      // { text: "樱桃", icon: "pen-to-square", link: "cherry" },
+      // { text: "火龙果", icon: "pen-to-square", link: "dragonfruit" },
+      // "tomato",
+      // "strawberry",
     ],
   },
   {

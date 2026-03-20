@@ -3,7 +3,7 @@ title: Python - 控制流语句
 date: 2026-03-18
 icon: pen-to-square
 category:
-  - algorithm
+  - python
 tag:
   - red
   - big

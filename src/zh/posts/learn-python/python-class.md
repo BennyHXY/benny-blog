@@ -3,7 +3,7 @@ title: Python - 类
 date: 2026-03-19
 icon: pen-to-square
 category:
-  - algorithm
+  - python
 tag:
   - red
   - big
