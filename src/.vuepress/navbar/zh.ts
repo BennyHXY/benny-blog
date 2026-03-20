@@ -81,13 +81,8 @@ export const zhNavbar = navbar([
     prefix: "/zh/posts/article/",
     children: [
       {
-        text: "解题的过程",
-        prefix: "problem-solving/",
+        text: "目录页",
         link: "",
-        children: [
-          { text: "luogu", link: "" },
-          { text: "SICNU OJ", link: "" },
-        ],
       },
       // {
       //   text: "苹果",
