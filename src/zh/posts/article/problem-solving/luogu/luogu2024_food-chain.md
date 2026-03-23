@@ -2,6 +2,7 @@
 title: luogu2024 食物链 - 题解
 date: 2026-03-23
 icon: pen-to-square
+cover: /assets/images/cover4_luogup2024.jpg
 category:
   - algorithm
 tag:
