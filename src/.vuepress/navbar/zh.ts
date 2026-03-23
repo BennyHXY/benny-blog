@@ -42,7 +42,7 @@ export const zhNavbar = navbar([
           "数据集",
           { text: "NumPy", link: "python-numpy" },
           "pytorch",
-          "matplotlib",
+          { text: "matplotlib", link: "python-matplotlib" },
           "例子：手写数字识别",
         ],
       },
