@@ -37,10 +37,10 @@ export const zhNavbar = navbar([
         text: "神经网络(实践篇)",
         icon: "",
 
-        prefix: "zh/posts/neural-practical/",
+        prefix: "zh/posts/learn-python/",
         children: [
           "数据集",
-          "NumPy",
+          { text: "NumPy", link: "python-numpy" },
           "pytorch",
           "matplotlib",
           "例子：手写数字识别",
