@@ -68,7 +68,11 @@ export const zhNavbar = navbar([
     children: [
       "数据结构",
       "计算机网络",
-      { text: "计算机组成原理", link: "computer-organization-catelog" },
+      {
+        text: "计算机组成原理",
+        link: "computer-organization/",
+        // link: "computer-organization-catelog"
+      },
       "操作系统",
     ],
   },
