@@ -21,6 +21,19 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
+      text: "计算机科学",
+      prefix: "posts/computer-science/",
+      children: "structure",
+      // children: [
+
+      //   {
+      //     text: "计算机组成原理",
+      //     prefix: "computer-organization/",
+      //     children: "structure",
+      //   },
+      // ],
+    },
+    {
       text: "文章",
       icon: "book",
       prefix: "posts/article/",

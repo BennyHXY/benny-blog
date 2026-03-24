@@ -64,8 +64,13 @@ export const zhNavbar = navbar([
   {
     text: "408统考",
     icon: "",
-    link: "",
-    children: ["数据结构", "计算机网络", "计算机组成原理", "操作系统"],
+    prefix: "zh/posts/computer-science/",
+    children: [
+      "数据结构",
+      "计算机网络",
+      { text: "计算机组成原理", link: "computer-organization-catelog" },
+      "操作系统",
+    ],
   },
   {
     text: "算法竞赛",

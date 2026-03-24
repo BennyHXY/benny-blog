@@ -1,5 +1,5 @@
 //提交远程库
 
 git add .     
-git commit -m "填写了个人介绍页"                                                                                      
+git commit -m "试用一下pdf阅读器和目录页生成"                                                                                      
 git push origin master
