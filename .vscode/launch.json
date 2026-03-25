@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "e:/benny/njs/studyfrontend/vuepress/vuepress-theme-hope/my-docs/src/.vuepress/public/files/huawei-software-2026/download/how-to-submit/Win_1/Win/demos",
+      "program": "e:/benny/njs/studyfrontend/vuepress/vuepress-theme-hope/my-docs/src/.vuepress/public/files/huawei-software-2026/download/how-to-submit/Win_1/Win/demos/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
