@@ -1,5 +1,5 @@
 ---
-title: 2026华为软件精英挑战赛  — 西南赛区
+title: 游记|2026华为软件精英挑战赛  — 西南赛区
 icon: pen-to-square
 date: 2026-03-25
 category:
