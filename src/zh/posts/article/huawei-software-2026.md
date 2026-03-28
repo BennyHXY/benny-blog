@@ -1,7 +1,7 @@
 ---
 title: 2026华为软件精英挑战赛  — 西南赛区
 icon: pen-to-square
-date: 2022-01-10
+date: 2026-03-25
 category:
   - software
   - 姚姑娘
