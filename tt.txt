@@ -1,5 +1,5 @@
-//提交远程库
+# 提交远程库
 
 git add .     
-git commit -m "接上一次，(继续写如何开发并部署一个静态网站, 不过还是没写完)"                                 
+git commit -m "(对本次提交的说明)"                                 
 git push origin master

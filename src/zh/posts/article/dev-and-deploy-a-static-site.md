@@ -144,7 +144,148 @@ PS C:\Users\14700>
 
 #### 3. 修改项目 / 写博文
 
+---
+
 ## Part Ⅱ: 部署
+
+其实我的部署水平很不怎么样，但是这里介绍我实施过的两种部署方式: 1. github pages, 2. 阿里云服务器 + nginx .
+
+### Github Pages
+
+#### 前置
+
+你需要下载 [git](https://git-scm.com/) 和 注册 [github](https://github.com/) 账号。
+
+- [廖雪峰的git教程 - 安装git](https://liaoxuefeng.com/books/git/install-git/index.html)
+- [廖雪峰的git教程 - 远程仓库](https://liaoxuefeng.com/books/git/remote/index.html)
+
+#### 流程
+
+1.  在github上创建仓库并与本地项目关联。
+
+    1.1. 在github上创建仓库
+    ![create repo on github - 01](/assets/images/article/create-repo-on-github-01.png)
+    在顶部栏这个 `+` 的下拉菜单里选择 `New Repository`
+    ![create repo on github - 02](/assets/images/article/create-repo-on-github-02.png)
+    填写项目名称和描述，其他东西选啥都不添加。
+    1.2. 将远程库与本地项目关联
+    完成上一步后，会来到这个页面：
+    ![create repo on github - 03](/assets/images/article/create-repo-on-github-03.png)
+    点击这个按钮复制这段内容到剪贴板，然后在本地项目的Terminal窗口中按`Ctrl`+`V`粘贴，回车执行。
+    重新在github中进入项目页面，可以看到项目中出现了一个 `README.md` 文件，说明关联成功。
+    ![git-add-remote-repo-01](/assets/images/article/git-add-remote-repo-01.png)
+
+2.  修改github pages的`settings`, 并推送本地内容
+    2.1 修改github pages的`settings`
+    在github的项目页面，切换到`settings`选项卡，然后在左侧边栏中点`Pages`，然后把`branch`改成`gh-pages`，点`save`按钮保存。
+    ![github-pages-settings-01](/assets/images/article/github-pages-settings-01.png)
+    2.2 推送本地内容
+    将这段命令复制到本地项目的Terminal，(之后如果更新了博客文章，要让网上部署的博客跟本地同步也是这个命令)，双引号里的内容可以重新填一下：
+
+    ```shell
+    # 提交远程库
+
+    git add .
+    git commit -m "(对本次提交的说明)"
+    git push origin main
+    ```
+
+    重新进入github的项目页面，可以看到本地的东西都推送到了远程库，并且这里出现了一个棕色的点点(pending, 表示在排队)，等一会儿以后他会变成红色的叉或者绿色的勾。（如果运气好，是绿色的勾的话我们就已经部署成功了。）
+    ![alt text](/assets/images/article/github-pages-action-pending.png)
+
+    我这里是运气不好的情况，他变成了红色的叉。然后我们就点进这个页面把错误信息粘贴给ai问他怎么回事，然后根据ai的建议修改部署的配置文件(路径：`my-docs\.github\workflows\deploy-docs.yml`)。我这里是那个脚手架生成的两个地方的文件路径是window风格的`\`,我们需要把他改成linux风格的`/`。(例如得把`src\.vuepress\dist`改成`src/.vuepress/dist`)
+    我改出来的 `deploy-docs.yml` 文件：
+
+    ```yml
+    name: 部署文档
+
+    on:
+      push:
+        branches:
+          - main
+      workflow_dispatch:
+
+    permissions:
+      contents: write
+
+    jobs:
+      deploy-gh-pages:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
+              # 如果你文档需要 Git 子模块，取消注释下一行
+              # submodules: true
+
+          - name: 设置 Node.js
+            uses: actions/setup-node@v4
+            with:
+              node-version: 20
+              cache: npm
+
+          - name: 安装依赖
+            run: |
+              corepack enable
+              npm ci
+
+          - name: 构建文档
+            env:
+              NODE_OPTIONS: --max_old_space_size=8192
+            run: |-
+              npm run docs:build
+              > src/.vuepress/dist/.nojekyll
+
+          - name: 部署文档
+            uses: JamesIves/github-pages-deploy-action@v4
+            with:
+              # 部署文档
+              branch: gh-pages
+              folder: src/.vuepress/dist
+    ```
+
+    2.3. 还有一个地方要改，在项目目录的`/src/.vuepress/`下面找到`config.ts`，把这里的第一行里的`base` 改成项目名，我这里是 `demo-blog`.
+    ![github pages deployments - vuepressbase - 03](/assets/images/article/github-pages-deployments-03-vuepress-base.png)
+
+    修改完以后我们重新在Terminal中输入推送命令
+
+    ```powershell
+    # 提交远程库
+
+    git add .
+    git commit -m "修改了deploy-docs.yml中路径错误的问题"
+    git push origin main
+    ```
+
+    回车执行后再进入项目页面应该就可以看到部署成功了，这里出现了一个 `Deployments`的块块，点进去。
+
+    ![github-pages-deployments-02](/assets/images/article/github-pages-deployments-02.png)
+    这里会出现部署好的地址
+    ![github-pages-deployments-04-finished](/assets/images/article/github-pages-deployments-04-finished.png)
+    再点进去，(他可能要过一会儿才能加载出页面，第一次比较慢一点，以后推送的时候就很快了)
+    里面就是部署好的页面了：
+    ![github-pages-deployments-05-finished](/assets/images/article/github-pages-deployments-05-finished.png)
+
+3.  再次修改项目并推送
+    至此我们基本就跑通全流程了(本地开发+远程同步)。之后我们的工作流全部是本地修改项目(写markdown文章)，然后远程推送了。
+    再次把同步远程库的命令粘贴在这里:
+
+    ```powershell
+    # 提交远程库
+
+    git add .
+    git commit -m "(对本次提交的说明)"
+    git push origin main
+    ```
+
+    每次本地改完，然后Terminal里粘贴这个命令，回车执行，本地项目就会同步到远程库并自动部署了。
+    我这里改了一下主页的标题和口号：
+    ![gh-pg-finished-06](/assets/images/article/github-pages-deployments-06-finished.png)
+
+    以上就是 `vuepress` 项目部署到 `github pages` 的全部流程了。
+
+### 阿里云 + nginx
 
 ---
 
