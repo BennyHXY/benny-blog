@@ -36,7 +36,7 @@ dreamweaver[https://helpx.adobe.com/cn/dreamweaver/get-started.html] 、 sublime
 :::
 
 2. Node.js
-   javascript的编译环境，自带npm(包管理器)。(唉我也说不清楚因为我也没搞懂，反正你下吧 )
+   javascript的运行环境，自带npm(包管理器)。(唉我也说不清楚因为我也没搞懂，反正你下吧 )
    链接: [https://nodejs.org/en]
    ![点这个绿按钮直接下载](/assets/images/article/download-nodejs.png)
    点这个绿按钮直接下载。验证是否安装成功：
