@@ -3,7 +3,8 @@ home: true
 layout: Blog
 icon: house
 title: 博客主页
-heroImage: https://theme-hope-assets.vuejs.press/logo.svg
+heroImage: /assets/icon/[14][25][36].png
+bgImage: /assets/images/background-blue.webp
 heroText: 胡小言的博客
 heroFullScreen: true
 tagline: 丰富技术积累，以最快的速度上线产品。

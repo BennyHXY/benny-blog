@@ -3,7 +3,8 @@ home: true
 layout: Blog
 icon: house
 title: Blog Home
-heroImage: https://theme-hope-assets.vuejs.press/logo.svg
+heroImage: /assets/icon/[14][25][36].png
+bgImage: /assets/images/background-blue.webp
 heroText: Benny's Blog
 tagline: A site for learning, thinking and sharing..
 heroFullScreen: true

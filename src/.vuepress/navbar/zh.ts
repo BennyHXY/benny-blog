@@ -41,7 +41,7 @@ export const zhNavbar = navbar([
         children: [
           "数据集",
           { text: "NumPy", link: "python-numpy" },
-          "pytorch",
+          { text: "PyTorch", link: "python-pytorch" },
           { text: "matplotlib", link: "python-matplotlib" },
           "例子：手写数字识别",
         ],
