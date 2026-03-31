@@ -30,9 +30,9 @@ projects:
     link: https://你的文章链接
 
   - icon: user-group
-    name: 伙伴名称
-    desc: 伙伴详细介绍
-    link: https://你的伙伴链接
+    name: 梓滢ResearchNotes
+    desc: 梓滢的ResearchNotes,记录临床、科研与成长中的思考
+    link: https://ziyingresearchnotes.github.io/
 
   - icon: https://theme-hope-assets.vuejs.press/logo.svg
     name: 自定义项目

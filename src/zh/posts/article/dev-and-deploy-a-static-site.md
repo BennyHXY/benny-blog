@@ -319,6 +319,26 @@ PS C:\Users\14700>
 
 #### 4. 修改项目 - markdown文章的部分
 
+- 编辑器和基本的markdown语法:
+  - 我大一的时候看的这个视频: [https://www.bilibili.com/video/BV1si4y1472o/?spm_id_from=333.1387.favlist.content.click&vd_source=ef31e1f1a615950aff02d37e8594bac7]
+    大概是在vscode里面下载扩展然后你就可以在vscode里编辑markdown文章。
+  - 语法速查(其实是我现搜的): [https://markdown.com.cn/cheat-sheet.html#%E6%80%BB%E8%A7%88]
+
+- 我们项目中的markdown:
+  - markdown文件放在`posts/`这个目录下，或者是`src/`下的其他目录。
+  - markdown文件的结构:
+    :::note frontmatter
+    vuepress项目里的markdown文件比我们平常用的markdown文件多了一个`frontmatter`的部分，就是每个markdown文件的头部有一个由`---`包裹起来的`yaml`代码块，我们称这个代码块为`frontmatter`。
+
+    ![](/assets/images/article/how-to-dev-and-deploy-a-static-site/markdown-structure.png)
+    :::
+
+  - 一些扩展的东西可以在 [V2文档的指南](https://theme-hope.vuejs.press/zh/guide/)中查阅到，例如
+    - [V2文档/指南/Markdown/图表/思维导图](https://theme-hope.vuejs.press/zh/guide/markdown/chart/markmap.html)
+    - [V2文档/指南/组件/内置组件 ](https://theme-hope.vuejs.press/zh/guide/component/built-in.html) (里面包含不同种类的媒体播放器或者是pdf阅读器之类的东西)
+
+    指南里面文章的结构大概就是让你先去 `.vuepress/theme.ts`里改一个什么属性的值，然后给一个用这个东西的例子。 （这个时候可能出现vscode里markdown预览和运行在`localhost:8080`的东西显示不一致的情况，因为可能vscode里扩展没下齐。我是直接不管以网页的为准的。因为它部署的版本肯定还是和`localhost`的一致的。）
+
 ---
 
 ## Part Ⅱ: 部署
@@ -458,10 +478,37 @@ PS C:\Users\14700>
     我这里改了一下主页的标题和口号：
     ![gh-pg-finished-06](/assets/images/article/github-pages-deployments-06-finished.png)
 
-    以上就是 `vuepress` 项目部署到 `github pages` 的全部流程了。
+    以上就是 `vuepress` 项目部署到 `github pages` 的全部流程了。你可以在 [https://bennyhxy.github.io/demo-blog/] 访问到我们刚刚部署的这个网站呢。
 
 ### 阿里云 + nginx
+
+#### 前置
+
+1. 服务器:一台随时都开着的电脑。用户来请求访问我们的网站时，服务器就把页面给他发过去。
+   我们在[阿里云官网](https://www.aliyun.com/)租一台服务器。网站部署是一种很古老的东西，所以需要的计算资源很少，你只需要租一个最便宜的cpu的就可以了。你要玩那种很新的东西才需要什么超大gpu。
+   我租的这个(99r/年):
+   ![deploy-by-nginx-01-aliyun-basic-info](/assets/images/article/how-to-dev-and-deploy-a-static-site/deploy-by-nginx-01-aliyun-basic-info.png)
+
+1. 网页代理软件：使得一台电脑能被用作网络服务器。在云服务器上下载[nginx](https://nginx.org/)。
+
+1. 文件传输软件: 把我们本地开发完的项目发到服务器。
+   我用的是 [FileZilla](https://filezilla-project.org/).
+
+- 推荐阅读: [如何设置一个本地测试服务器? | MDN Web Docs](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto/Tools_and_setup/set_up_a_local_testing_server)
+
+#### 流程
+
+我不太有空重新体验这个流程了，所以这里就没有很多的过程图片咯。只写一个大概的过程，如果你需要更详细的图文过程，就q我叭。
+
+1. 租服务器，开安全组
+2. 使用文件传输软件把项目文件传过去。(原生项目直接传，框架项目传`npm run build`以后的`dist`文件夹)
+3. 改nginx配置文件，运行nginx
+4. 浏览器输入网址，访问。
+
+效果: [http://47.108.209.165/] (我的音乐播放器。。)
 
 ---
 
 ## 小结
+
+在这篇文章中，我们介绍了如何开发和部署一个静态网站。我们较详细地讲解了使用vuepress-press搭建博客，并部署到 github pages 的流程，同时也简略的介绍了使用原生 html + css + javascript 开发网站和自己租服务器和配置代理的部署方式。希望这篇文章能帮你在多彩的网络世界里更进一步，如果过程中遇到问题，就q我叭。
