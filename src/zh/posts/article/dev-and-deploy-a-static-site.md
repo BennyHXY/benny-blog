@@ -314,6 +314,8 @@ PS C:\Users\14700>
   ![change-project-navbar-03](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-navbar-03.png)
 
 - 侧边栏
+  在`.vuepress/sidebar.ts`里面，机制和`navbar.ts`差不多。除了`children`的值是一个`"structure"`，它会生成`prefix`指向的目录的目录结构。
+  如果你没有特别的需求，这里就不用改啦。只要把markdown文章放进posts文件夹，侧边栏的`文章`栏目就会自动显示出你的文章了。
 
 #### 4. 修改项目 - markdown文章的部分
 
