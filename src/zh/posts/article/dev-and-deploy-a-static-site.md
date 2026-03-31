@@ -151,8 +151,14 @@ PS C:\Users\14700>
 
 - 主页
   修改的位置在`.vuepress/src/`下的`README.md`里面。它的 `frontmatter` 部分里有一句 `home:true` 说明它是主页。
+
+  :::note frontmatter
   vuepress项目里的markdown文件比我们平常用的markdown文件多了一个`frontmatter`的部分，就是每个markdown文件的头部有一个由`---`包裹起来的`yaml`代码块，我们称这个代码块为`frontmatter`。
-  ![alt text](/assets/images/article/how-to-dev-and-deploy-a-static-site/markdown-structure.png)
+
+  ![](/assets/images/article/how-to-dev-and-deploy-a-static-site/markdown-structure.png)
+
+  :::
+
   我完全没有了解过 `yaml` , 但是他看起来就是一堆 `<属性>:<值>`这样的东东组成的。
   然后我们通过修改这个 `README.md` 里的`heroText` 和 `tagline` 修改显示在主页的两个文字段。
   ![alt text](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-home-01.png)
@@ -167,7 +173,7 @@ PS C:\Users\14700>
 :::note 对图片路径的说明
 
 - 本地图片：把你要插入的图片放在 `.vuepress/public/assets/images/`下面。然后你后面引用的时候，在vscode的侧边栏里选中这张图片，按`Ctrl`+`C`，在你要用这个图片的地方`Ctrl`+`V`,它就会出现这个图片的路径。然后，你需要把`public`及以前的路径给删掉，因为`vuepress`默认就是在`public`文件夹下面找图片资源的。例如我这里复制出来是`src/.vuepress/public/assets/images/background/luoke-02.webp` ，我需要把他删成 `/assets/images/background/luoke-02.webp`。
-- 网络图片：把你在网上搜到图片的地址直接粘贴过来就可以了，不过很多时候不建议这么做。因为有可能这个地址里的东西会换成别的内容,或者其他问题。
+- 网络图片：把你在网上搜到图片的地址直接粘贴过来就可以了，不过很多时候不建议这么做。因为有可能这个地址里的东西会换成别的内容,或者出现其他问题。
 
 :::
 
@@ -269,15 +275,43 @@ PS C:\Users\14700>
   :::warning
   导航栏里的菜单结构不要超过三层。(比我这个再深就不行了。)
   :::
-  接下来我们修改 `link` 和 `prefix` 的值把下拉菜单里的项连接到具体的markdown页面。
-  项目的markdown文件都放在 `src/posts/`目录下面，假设我们在`posts/`下新建一个名为`/computer-architecture/`的文件夹，用来存放`计算机组成原理`的东西。如下所示，其中`processor` 和 `representation-and-process-of-infomation` 是两个空文件夹，`memory-hierachy.md`是一个包含frontmatter和正文的markdown文件。
+  接下来我们修改 `link` 和 `prefix` 的值把下拉菜单里的项链接到具体的markdown页面。
+  项目的markdown文件都放在 `src/posts/`目录下面，假设我们在`posts/`下新建一个名为`/computer-architecture/`的文件夹，用来存放`计算机组成原理`的东西。如下所示，
 
   ```
     COMPUTER-ARCHITECTURE
+    ├─representation-and-processing-of-information
+    │  ├─Integers.md
+    │  └─Floats.md
     ├─processor
-    ├─representation-and-process-of-infomation
-    └─memory-hierachy.md
+    │  ├─Instruction-Sets.md
+    │  └─pipline.md
+    └─memory-hierarchy.md
+
   ```
+
+  然后我们修改`navbar.ts`中`计算机组成原理`的部分:
+
+  ```typescript
+  {
+      text: "计算机组成原理",
+      prefix: "/posts/computer-architecture/",
+      children: [
+        {
+          text: "信息的表示和处理",
+          link: "representation-and-processing-of-information/",
+        },
+        { text: "处理器", link: "processor/" },
+        { text: "存储器", link: "memory-hierarchy" },
+      ],
+    },
+  ```
+
+  跳转机制：每个`link`的跳转路径是它所有的祖先节点的`prefix`再拼上它自己。以`/`结尾的表示一个目录，默认会跳到这个目录下的`README.md`文件。如果这个目录下没有`README.md`文件的话，它会生成一个这个目录的目录页代替`README.md`。
+
+  例如，"存储器"的跳转路径是`"/posts/computer-architecture/"+"memory-hierarchy"`=`"posts/computer-architecture/memory-hierarchy"`;
+  "处理器"的跳转路径是 `"/posts/computer-architecture/"+"processor/"`=`"/posts/computer-architecture/processor/"`.这是一个以`/`结尾的目录，并且下面没有`README.md`，所以它会跳转到一个自动生成的目录页。
+  ![change-project-navbar-03](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-navbar-03.png)
 
 - 侧边栏
 
