@@ -142,7 +142,146 @@ PS C:\Users\14700>
 
 :::
 
-#### 3. 修改项目 / 写博文
+#### 3. 修改项目 - 网站的部分
+
+在你本地运行这个项目的时候，你会在导航栏里面看到这两个栏目，都是可以点进去的，你可以在里面看到很详细的对这个项目的说明。
+![project-doc](/assets/images/article/how-to-dev-and-deploy-a-static-site/project-doc.png)
+
+我这里给一个修改 `主页` / `个人信息` / `顶部导航栏` / `侧边栏` 这几个部位的流程作参考。
+
+- 主页
+  修改的位置在`.vuepress/src/`下的`README.md`里面。它的 `frontmatter` 部分里有一句 `home:true` 说明它是主页。
+  vuepress项目里的markdown文件比我们平常用的markdown文件多了一个`frontmatter`的部分，就是每个markdown文件的头部有一个由`---`包裹起来的`yaml`代码块，我们称这个代码块为`frontmatter`。
+  ![alt text](/assets/images/article/how-to-dev-and-deploy-a-static-site/markdown-structure.png)
+  我完全没有了解过 `yaml` , 但是他看起来就是一堆 `<属性>:<值>`这样的东东组成的。
+  然后我们通过修改这个 `README.md` 里的`heroText` 和 `tagline` 修改显示在主页的两个文字段。
+  ![alt text](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-home-01.png)
+  效果:
+  ![alt text](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-home-02.png)
+  接下来，我们在frontmatter中修改`heroImage`的值和添加`bgImage`这个属性来修改主页显示的背景图片和图标：
+  ![change-project-home-03](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-home-03.png)
+
+  效果：
+  ![change-project-home-04](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-home-04.png)
+
+:::note 对图片路径的说明
+
+- 本地图片：把你要插入的图片放在 `.vuepress/public/assets/images/`下面。然后你后面引用的时候，在vscode的侧边栏里选中这张图片，按`Ctrl`+`C`，在你要用这个图片的地方`Ctrl`+`V`,它就会出现这个图片的路径。然后，你需要把`public`及以前的路径给删掉，因为`vuepress`默认就是在`public`文件夹下面找图片资源的。例如我这里复制出来是`src/.vuepress/public/assets/images/background/luoke-02.webp` ，我需要把他删成 `/assets/images/background/luoke-02.webp`。
+- 网络图片：把你在网上搜到图片的地址直接粘贴过来就可以了，不过很多时候不建议这么做。因为有可能这个地址里的东西会换成别的内容,或者其他问题。
+
+:::
+
+:::info 参考:
+
+- [https://theme-hope.vuejs.press/zh/guide/blog/home.html] (v2文档/指南/博客首页)
+- [https://theme-hope.vuejs.press/zh/config/frontmatter/blog-home.html](v2文档/配置Frontmatter/配置博客主页/Frontmatter 配置)
+
+:::
+
+- 个人信息
+  从主页往下拉，这个部位显示的东西
+  ![alt text](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-auth-info-02.png)
+  在 `.vuepress/theme.ts`里面改。我觉得这几个地方(作者名 / 博客描述 / logo)你点进去看就知道了。不知道再q我叭。
+
+- 顶部导航栏
+  在 `。vuepress/navbar.ts`这个文件里设置，点进去然后会看到 `export default navbar([])` 这样一句话。中括号表示数组，里面的项以`,`分隔，里面的项可以是由大括号`{}`包裹的`Object(对象)`,或者是由双引号`""`包裹的`String(字符串)`。我们通过在这个数组里面添加项来添加在导航栏里显示的东西。
+  - 对象：
+    对象和那个`yaml`差不多，就是由一堆`属性:值`这样的键值对组成的，键值对之间由`,`分隔。他这里必填的属性是 `text` 和 `link`，分别表示显示的文字和点击它以后跳转的路径。或者你有 `children` 的话你也可以不要`link`。
+  - 字符串：
+    字符串的效果跟`link`差不多，通过里面的路径跳转到相应的页面。如果找不到这个的话，他会给你转到一个404界面。
+
+  例子：
+  假设我设计一个这样的项及其下拉菜单
+
+  ```text
+  fighting for 408
+      - 数据结构
+      	- 线性表
+      	- 树
+      	- 图
+      - 计算机网络
+      	- 概述
+      	- 应用层
+      	- 传输层
+      	- 网络层
+      	- 链路层
+      	- 物理层
+      - 计算机组成原理
+      	- 信息的表示和处理
+      	- 处理器
+      	- 存储器
+      - 操作系统
+    	- 概述
+    	- 进程管理
+    	- 内存管理
+    	- 文件管理
+    	- I/O 管理
+
+  ```
+
+  我就先编写一个这样的`Object`放到`navbar.ts`中的数组：
+
+  ```typescript
+    {
+        text:"fighting for 408",
+        children:[]
+    }
+  ```
+
+  整个`navbar.ts`的结构：
+  ![change-project-navbar-01](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-navbar-01.png)
+
+  然后我们再添加`children`数组中的内容完善整个下拉菜单:
+
+  ```typescript
+  {
+    text: "fighting for 408",
+    children: [
+      {
+        text: "数据结构",
+        children: ["线性表", "树", "图"],
+      },
+      {
+        text: "计算机网络",
+        children: [
+          "概述",
+          "应用层",
+          "传输层",
+          "网络层",
+          "数据链路层",
+          "物理层",
+        ],
+      },
+      {
+        text: "计算机组成原理",
+        children: ["信息的表示和处理", "处理器", "存储器"],
+      },
+      {
+        text: "操作系统",
+        children: ["概述", "进程管理", "内存管理", "文件管理", "I/O管理"],
+      },
+    ],
+  },
+  ```
+
+  这样我们就在导航栏中渲染了一个完整的目录结构了:
+  ![change-project-navbar-02.png](/assets/images/article/how-to-dev-and-deploy-a-static-site/change-project-navbar-02.png)
+  :::warning
+  导航栏里的菜单结构不要超过三层。(比我这个再深就不行了。)
+  :::
+  接下来我们修改 `link` 和 `prefix` 的值把下拉菜单里的项连接到具体的markdown页面。
+  项目的markdown文件都放在 `src/posts/`目录下面，假设我们在`posts/`下新建一个名为`/computer-architecture/`的文件夹，用来存放`计算机组成原理`的东西。如下所示，其中`processor` 和 `representation-and-process-of-infomation` 是两个空文件夹，`memory-hierachy.md`是一个包含frontmatter和正文的markdown文件。
+
+  ```
+    COMPUTER-ARCHITECTURE
+    ├─processor
+    ├─representation-and-process-of-infomation
+    └─memory-hierachy.md
+  ```
+
+- 侧边栏
+
+#### 4. 修改项目 - markdown文章的部分
 
 ---
 
