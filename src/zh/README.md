@@ -9,35 +9,45 @@ heroText: 胡小言的博客
 heroFullScreen: true
 tagline: 丰富技术积累，以最快的速度上线产品。
 projects:
-  - icon: folder-open
-    name: 项目名称
-    desc: 项目详细描述
-    link: https://你的项目链接
+  - icon: link
+    name: MDN Web Docs
+    desc: developer.mozilla.org
+    link: https://developer.mozilla.org/zh-CN/
 
   - icon: link
-    name: 链接名称
-    desc: 链接详细描述
-    link: https://链接地址
+    name: Z-library
+    desc: Z-library —— 世界上最大的电子图书馆。自由访问知识和文化。
+    link: https://zh.z-library.sk/
 
-  - icon: book
-    name: 书籍名称
-    desc: 书籍详细描述
-    link: https://你的书籍链接
+  - icon: folder-open
+    name: 火车售票系统
+    desc: C/C++实现的简易版火车售票系统，分为车票和用户两个子系统。
+    link: https://github.com/BennyHXY/buy_Benny_de_HuoChePiao
+
+  - icon: folder-open
+    name: 音乐播放器
+    desc: 原生html/css/javascript构建的音乐播放器。
+    link: https://github.com/BennyHXY/music-heaven
+
+  # - icon: book
+  #   name: 书籍名称
+  #   desc: 书籍详细描述
+  #   link: https://你的书籍链接
 
   - icon: newspaper
-    name: 文章名称
-    desc: 文章详细描述
-    link: https://你的文章链接
+    name: 如何开发和部署一个静态网站
+    desc: 这篇博客文章讲述了怎么搭建一个博客。
+    link: /zh/posts/article/dev-and-deploy-a-static-site.md
 
   - icon: user-group
     name: 梓滢ResearchNotes
     desc: 梓滢的ResearchNotes,记录临床、科研与成长中的思考
     link: https://ziyingresearchnotes.github.io/
 
-  - icon: https://theme-hope-assets.vuejs.press/logo.svg
-    name: 自定义项目
-    desc: 自定义详细介绍
-    link: https://你的自定义链接
+  # - icon: https://theme-hope-assets.vuejs.press/logo.svg
+  #   name: 自定义项目
+  #   desc: 自定义详细介绍
+  #   link: https://你的自定义链接
 
 footer: 自定义你的页脚文字
 ---
