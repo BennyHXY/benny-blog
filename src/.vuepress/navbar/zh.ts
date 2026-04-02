@@ -62,18 +62,39 @@ export const zhNavbar = navbar([
     ],
   },
   {
-    text: "408统考",
-    icon: "",
-    prefix: "zh/posts/computer-science/",
+    text: "408-CS",
     children: [
-      "数据结构",
-      "计算机网络",
+      {
+        text: "数据结构",
+        children: ["线性表", "树", "图"],
+      },
+      {
+        text: "计算机网络",
+        children: [
+          "概述",
+          "应用层",
+          "传输层",
+          "网络层",
+          "数据链路层",
+          "物理层",
+        ],
+      },
       {
         text: "计算机组成原理",
-        link: "computer-organization/",
-        // link: "computer-organization-catelog"
+        prefix: "/zh/posts/computer-science/computer-architecture/",
+        children: [
+          {
+            text: "信息的表示和处理",
+            link: "representation-and-processing-of-information/",
+          },
+          { text: "处理器", link: "processor/" },
+          { text: "存储器", link: "memory-hierarchy/" },
+        ],
       },
-      "操作系统",
+      {
+        text: "操作系统",
+        children: ["概述", "进程管理", "内存管理", "文件管理", "I/O管理"],
+      },
     ],
   },
   {
@@ -134,5 +155,5 @@ export const zhNavbar = navbar([
     icon: "book",
     link: "https://theme-hope.vuejs.press/zh/",
   },
-  "/zh/demo/",
+  // "/zh/demo/",
 ]);
