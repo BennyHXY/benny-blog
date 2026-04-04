@@ -1,5 +1,7 @@
 import { defineUserConfig } from "vuepress";
 
+import { photoSwipePlugin } from "@vuepress/plugin-photo-swipe";
+
 import theme from "./theme.js";
 
 export default defineUserConfig({
@@ -19,6 +21,12 @@ export default defineUserConfig({
   },
 
   theme,
+
+  plugins: [
+    photoSwipePlugin({
+      // 选项
+    }),
+  ],
 
   // Enable it with pwa
   // shouldPrefetch: false,
