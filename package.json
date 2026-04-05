@@ -13,6 +13,7 @@
   "devDependencies": {
     "@mathjax/src": "^4.1.1",
     "@vuepress/bundler-vite": "2.0.0-rc.26",
+    "echarts": "^6.0.0",
     "flowchart.ts": "^3.0.1",
     "katex": "^0.16.38",
     "markmap-lib": "^0.18.12",

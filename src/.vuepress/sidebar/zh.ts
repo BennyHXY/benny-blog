@@ -34,6 +34,12 @@ export const zhSidebar = sidebar({
       // ],
     },
     {
+      text: "playground",
+      // icon: "",
+      prefix: "posts/playground/",
+      children: "structure",
+    },
+    {
       text: "文章",
       icon: "book",
       prefix: "posts/article/",

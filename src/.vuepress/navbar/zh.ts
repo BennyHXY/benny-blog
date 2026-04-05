@@ -106,13 +106,21 @@ export const zhNavbar = navbar([
     children: [{ text: "算法模板", icon: "", link: "template_benny" }],
   },
   {
-    text: "博文",
+    text: "playground",
     icon: "pen-to-square",
-    prefix: "/zh/posts/article/",
+    prefix: "/zh/posts/playground/",
     children: [
+      // {
+      //   text: "目录页",
+      //   link: "",
+      // },
       {
-        text: "目录页",
-        link: "",
+        text: "Echarts0",
+        link: "echarts0",
+      },
+      {
+        text: "Echarts1",
+        link: "echarts1",
       },
       // {
       //   text: "苹果",

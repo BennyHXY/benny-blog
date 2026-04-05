@@ -43,7 +43,7 @@ plt.show()
 </template>
 <template #content>
 
-![figure 1](../../../.vuepress/public/assets/images/py-linspace02.png)
+![figure 1](/assets/images/py-linspace02.png)
 
 </template>
 
@@ -72,7 +72,7 @@ plt.show()
 </template>
 <template #content>
 
-![figure 2](../../../.vuepress/public/assets/images/tricky2.png)
+![figure 2](/assets/images/tricky2.png)
 
 </template>
 

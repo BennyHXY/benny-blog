@@ -1,5 +1,5 @@
 import { defineUserConfig } from "vuepress";
-
+import { markdownChartPlugin } from "@vuepress/plugin-markdown-chart";
 import { photoSwipePlugin } from "@vuepress/plugin-photo-swipe";
 
 import theme from "./theme.js";
@@ -23,8 +23,17 @@ export default defineUserConfig({
   theme,
 
   plugins: [
-    photoSwipePlugin({
-      // 选项
+    markdownChartPlugin({
+      // 开启 ECharts 支持
+      echarts: true,
+      // 开启脚本执行功能（“总开关”）
+      DANGEROUS_ALLOW_SCRIPT_EXECUTION: true,
+      // 指定哪些文件可以执行脚本（“白名单”）
+      DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST: [
+        "/zh/posts/article/cherry.md", // 例如：'/posts/safe-chart.md'
+        "/zh/posts/playground/echarts0.md",
+        "/zh/posts/playground/echarts1.md",
+      ],
     }),
   ],
 

@@ -138,9 +138,6 @@ export default hopeTheme({
     include: true,
     mark: true,
     markmap: true,
-    math: {
-      type: "katex", // 或 'mathjax'
-    },
     plantuml: true,
     preview: true,
     flowchart: true,
@@ -166,18 +163,18 @@ export default hopeTheme({
     vPre: true,
 
     // uncomment these if you need TeX support
-    // math: {
-    //   // install katex before enabling it
-    //   type: "katex",
-    //   // or install @mathjax/src before enabling it
-    //   type: "mathjax",
-    // },
+    math: {
+      // install katex before enabling it
+      type: "katex",
+      // or install @mathjax/src before enabling it
+      // type: "mathjax",
+    },
 
     // install chart.js before enabling it
     // chartjs: true,
 
     // install echarts before enabling it
-    // echarts: true,
+    echarts: true,
 
     // install flowchart.ts before enabling it
     // flowchart: true,
