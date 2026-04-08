@@ -98,6 +98,26 @@ export const zhNavbar = navbar([
     ],
   },
   {
+    text: "408-math",
+    prefix: "/zh/posts/math/",
+    children: [
+      {
+        text: "微积分",
+        prefix: "calculus/",
+        link: "calculus/",
+        children: [
+          "笔记 - 函数",
+          "笔记 - 微分",
+          "笔记 - 积分",
+          { text: "导数公式", link: "formulas/table-of-derivatives" },
+          { text: "积分表", link: "table-of-integrals" },
+        ],
+      },
+      { text: "线性代数", link: "linear-algebra/" },
+      { text: "概率论与数理统计", link: "probability-and-statistics/" },
+    ],
+  },
+  {
     text: "算法竞赛",
     activeMatch: "^/zh/posts/algorithm",
     icon: "",

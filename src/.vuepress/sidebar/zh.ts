@@ -11,6 +11,12 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
+      text: "数学",
+      // icon: "",
+      prefix: "posts/math/",
+      children: "structure",
+    },
+    {
       text: "算法竞赛",
       prefix: "posts/algorithm/",
       children: "structure",
@@ -39,6 +45,7 @@ export const zhSidebar = sidebar({
       prefix: "posts/playground/",
       children: "structure",
     },
+
     {
       text: "文章",
       icon: "book",
