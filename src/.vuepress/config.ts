@@ -33,6 +33,7 @@ export default defineUserConfig({
         "/zh/posts/article/cherry.md", // 例如：'/posts/safe-chart.md'
         "/zh/posts/playground/echarts0.md",
         "/zh/posts/playground/echarts1.md",
+        "/zh/posts/math/calculus/notes/functions/elementary-functions.md",
       ],
     }),
   ],

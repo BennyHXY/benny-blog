@@ -106,7 +106,10 @@ export const zhNavbar = navbar([
         prefix: "calculus/",
         link: "calculus/",
         children: [
-          "笔记 - 函数",
+          {
+            text: "笔记 - 函数",
+            link: "notes/functions/",
+          },
           "笔记 - 微分",
           "笔记 - 积分",
           { text: "导数公式", link: "formulas/table-of-derivatives" },
