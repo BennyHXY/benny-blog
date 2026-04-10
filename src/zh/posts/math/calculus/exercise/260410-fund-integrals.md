@@ -28,8 +28,15 @@ tag:
 
 ### 例题
 
+![alt text](/assets/images/math/excercise/260410/p1p2p3.jpg)
+![alt text](/assets/images/math/excercise/260410/p4p5p6.jpg)
+
 ### 习题
+
+![alt text](/assets/images/math/excercise/260410/t1t2t3.jpg)
+![alt text](/assets/images/math/excercise/260410/t4t5.jpg)
+![alt text](/assets/images/math/excercise/260410/t6t7.jpg)
 
 ### 小结
 
-通过本次练习，我 。只要坚持练习、把时间花够，总有一天我也能成为数学高手。
+通过本次练习，我熟悉了基本积分公式的应用，加深了对公式的记忆。只要坚持练习、把时间花够，总有一天我也能成为数学高手。
