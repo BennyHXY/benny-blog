@@ -118,6 +118,10 @@ export default hopeTheme({
         hint: "Password: 1234",
         password: "1234",
       },
+      "/zh/posts/article/huawei-software-2026": {
+        hint: "记我与姚姑娘2026年3月一同参与华为软件精英挑战赛",
+        password: "2603",
+      },
     },
   },
 
