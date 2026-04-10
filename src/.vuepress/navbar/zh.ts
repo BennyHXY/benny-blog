@@ -113,7 +113,7 @@ export const zhNavbar = navbar([
           "笔记 - 微分",
           "笔记 - 积分",
           { text: "导数公式", link: "formulas/table-of-derivatives" },
-          { text: "积分表", link: "table-of-integrals" },
+          { text: "积分表", link: "formulas/table-of-integrals" },
         ],
       },
       { text: "线性代数", link: "linear-algebra/" },
