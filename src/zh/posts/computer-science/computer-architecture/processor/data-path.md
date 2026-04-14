@@ -15,7 +15,7 @@ tag:
 
 - 处理器要提供的功能：实现运算、存取、分支跳转三类指令的执行；
 - 实现处理器的方式：在寄存器、ALU、内存之间构建数据通路；
-- zjy录屏地址：[https://www.bilibili.com/video/BV1DVDpBzEex/?spm_id_from=333.1387.homepage.video_card.click&vd_source=ef31e1f1a615950aff02d37e8594bac7]
+- zjy老师录屏地址：[https://www.bilibili.com/video/BV1DVDpBzEex/?spm_id_from=333.1387.homepage.video_card.click&vd_source=ef31e1f1a615950aff02d37e8594bac7]
 
 ## 前置
 

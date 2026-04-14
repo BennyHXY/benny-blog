@@ -1,5 +1,5 @@
 ---
-title: Python - PyTorch
+title: PyTorch - Tensor
 date: 2026-03-30
 icon: pen-to-square
 category:
@@ -10,17 +10,17 @@ tag:
   - round
 ---
 
-# Python - Pytorch
-
-- [pytorch tutorial](https://docs.pytorch.org/tutorials/beginner/basics/intro.html)
+<!-- # Python - Pytorch -->
 
 ## Tensor
+
+<!-- - [pytorch tutorial](https://docs.pytorch.org/tutorials/beginner/basics/intro.html) -->
+
+- [pytorch tutorial - tensors](https://docs.pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html)
 
 `tensor` 和 NumPy 的 `ndarray` 完全是一个东西，只不过 `tensor` 还可以在 GPU 或者其他硬件加速器上运行。
 
 > Tensors are similar to NumPy’s ndarrays, except that tensors can run on GPUs or other hardware accelerators.
-
-- [pytorch tutorial - tensors](https://docs.pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html)
 
 ### 生成`tensor`
 

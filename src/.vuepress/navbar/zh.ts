@@ -41,9 +41,10 @@ export const zhNavbar = navbar([
         children: [
           "数据集",
           { text: "NumPy", link: "python-numpy" },
-          { text: "PyTorch", link: "python-pytorch" },
+          { text: "PyTorch", link: "pytorch/" },
           { text: "matplotlib", link: "python-matplotlib" },
           "例子：手写数字识别",
+          { text: "练习", link: "exercise/" },
         ],
       },
     ],
@@ -118,6 +119,7 @@ export const zhNavbar = navbar([
       },
       { text: "线性代数", link: "linear-algebra/" },
       { text: "概率论与数理统计", link: "probability-and-statistics/" },
+      { text: "练习", link: "exercise/" },
     ],
   },
   {
