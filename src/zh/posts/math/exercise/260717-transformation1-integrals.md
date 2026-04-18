@@ -69,7 +69,8 @@ mindmapDiagram {
 ![alt text](/assets/images/math/excercise/260417/p45.jpg) 
 ![alt text](/assets/images/math/excercise/260417/p6.jpg)
 
-
+## 小结
+ ... 我们将在下周继续练习 [公众号: 数学若只如初见 - 利用第一类换元法计算含三角函数不定积分的方法和典型例题](https://mp.weixin.qq.com/s/yksDFiYALmCGXOXZqmxyRg)。 只要坚持练习、把时间花够，总有一天我也能成为数学高手。
 
 
 
