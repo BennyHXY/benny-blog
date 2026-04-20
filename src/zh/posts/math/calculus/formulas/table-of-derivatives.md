@@ -61,7 +61,7 @@ tag:
 
 16. $\frac{d}{dx} (\csc x ) = - \csc x \cot x$
 
-17. $\frac{d}{dx} (\sec x ) = - \sec x \tan x$
+17. $\frac{d}{dx} (\sec x ) = \sec x \tan x$
 
 18. $\frac{d}{dx} (\cot x ) = - {\csc}^{2} x$
 
