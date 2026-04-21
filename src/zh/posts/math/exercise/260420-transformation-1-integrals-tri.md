@@ -41,7 +41,7 @@ $$
 
 :::info $\int \tan^{m}x \sec^{n}x \mathrm{d}x$
 - 如果正割函数的幂是偶次的，则保留一个 $\sec^{2}x$ 因子，并利用 $\sec^{2}x = 1 + \tan^{2}x$ 将剩余部分用 $\tan x$ 表示；
-- 如果正切函数的幂是奇次的，则保留一个 $\sec x \tan x$ 因子, 并利用 $ \tan^{2}x = \sec^{2}x - 1$ 将剩余部分用 $\sec x$ 表示；
+- 如果正切函数的幂是奇次的，则保留一个 $\sec x \tan x$ 因子, 并利用 $\tan^{2}x = \sec^{2}x - 1$ 将剩余部分用 $\sec x$ 表示；
 
 ![fig2](/assets/images/math/excercise/260420/fig2.png)
 
