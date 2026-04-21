@@ -121,7 +121,13 @@ plt.show()
 
 :::
 
-#### 九宫格显示
+##### 九宫格显示
+
+ - DTD
+
+<VPPreview>
+
+<template #code>
 
 ```python
 import torch
@@ -184,11 +190,159 @@ plt.suptitle("DTD - 编号{0} ~ {1}的图片".format(sta + 1, sta + 9), fontsize
 plt.tight_layout()  # 自动调整子图间距，防止标题重叠
 plt.show()
 ```
-:::details
+</template>
+<template #content>
+
 ![DTD 1~9](/assets/images/learn-python/pytorch/datasets/dtd/dtd_1to9.png) 
 ![DTD 456to464](/assets/images/learn-python/pytorch/datasets/dtd/dtd_456to464.png) 
 ![DTD 810~818](/assets/images/learn-python/pytorch/datasets/dtd/dtd_810to818.png)
-:::
+
+</template>
+
+</VPPreview>
+
+- FashionMNIST
+
+<VPPreview>
+
+<template #code>
+
+```python
+import torch
+from torch.utils.data import Dataset
+from torchvision import datasets
+from torchvision.transforms import ToTensor
+import matplotlib.pyplot as plt
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体为黑体
+plt.rcParams['axes.unicode_minus'] = False    # 解决负号显示问题
+
+
+training_data = datasets.FashionMNIST(
+    root="data",
+    train=True,
+    download=True,
+    transform=ToTensor()
+)
+
+test_data = datasets.FashionMNIST(
+    root="data",
+    train=False,
+    download=True,
+    transform=ToTensor()
+)
+
+labels_map = {
+    0: "T-Shirt",
+    1: "Trouser",
+    2: "Pullover",
+    3: "Dress",
+    4: "Coat",
+    5: "Sandal",
+    6: "Shirt",
+    7: "Sneaker",
+    8: "Bag",
+    9: "Ankle Boot",
+}
+figure = plt.figure(figsize=(8, 8))
+cols, rows = 3, 3
+
+sta = 0
+idx = sta
+
+for i in range(1, cols * rows + 1):
+    # sample_idx = torch.randint(len(training_data), size=(1,)).item()
+    idx += 1
+    img, label = training_data[idx]
+    figure.add_subplot(rows, cols, i)
+    plt.title(labels_map[label])
+    plt.axis("off")
+    plt.imshow(img.squeeze())
+    # plt.imshow(img.squeeze(), cmap="gray")
+plt.suptitle("FashionMNIST - 编号{0} ~ {1}的图片".format(sta + 1, sta + 9), fontsize=20, y=0.98)
+plt.show()
+```
+
+
+</template>
+<template #content>
+
+![alt text](</assets/images/learn-python/pytorch/FashionMINST/plot_2026-04-22 00-00-02_0.png>) 
+![alt text](</assets/images/learn-python/pytorch/FashionMINST/plot_2026-04-22 00-00-02_1.png>)
+</template>
+
+</VPPreview>
+
+
+
+
+
+- MNIST
+
+<VPPreview>
+
+<template #code>
+
+```python
+import torch
+from torch.utils.data import Dataset
+from torchvision import datasets
+from torchvision.transforms import ToTensor
+import matplotlib.pyplot as plt
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体为黑体
+plt.rcParams['axes.unicode_minus'] = False    # 解决负号显示问题
+
+
+training_data = datasets.MNIST(
+    root="data",
+    train=True,
+    download=True,
+    transform=ToTensor()
+)
+
+test_data = datasets.MNIST(
+    root="data",
+    train=False,
+    download=True,
+    transform=ToTensor()
+)
+
+print(training_data.classes)
+classes = training_data.classes
+
+figure = plt.figure(figsize=(8, 8))
+cols, rows = 3, 3
+
+sta = 2017
+idx = sta
+
+for i in range(1, cols * rows + 1):
+    # sample_idx = torch.randint(len(training_data), size=(1,)).item()
+    idx += 1
+    img, label = training_data[idx]
+    figure.add_subplot(rows, cols, i)
+    plt.title(classes[label])
+    # plt.title(labels_map[label])
+    plt.axis("off")
+    plt.imshow(img.squeeze())
+    # plt.imshow(img.squeeze(), cmap="gray")
+plt.suptitle("MNIST - 编号{0} ~ {1}的图片".format(sta + 1, sta + 9), fontsize=20, y=0.98)
+plt.show()
+```
+
+
+</template>
+<template #content>
+
+![alt text](/assets/images/learn-python/pytorch/datasets/MNIST/MNIST_1to9.png) 
+![alt text](/assets/images/learn-python/pytorch/datasets/MNIST/MNIST_2018to2026.png)
+</template>
+
+</VPPreview>
+
+
+
+
+
 
 
 

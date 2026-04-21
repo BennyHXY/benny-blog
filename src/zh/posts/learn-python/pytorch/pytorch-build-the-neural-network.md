@@ -18,7 +18,7 @@ tag:
 
 这章“Build the Neural Network”是讲搭建了一个神经网络的静态结构（输入层、隐藏层、输出层），当一张图像经过这个网络，会得到一个预测他是（0~9）中哪一类的向量。这章不涉及反向传播、梯度下降、优化器、损失函数这些“如何让管道变聪明”的内容.
 
-### 代码 - code
+## 代码 - code
 ```python
 from PIL import Image
 import os
@@ -249,21 +249,194 @@ print(f"我预测y的类别Predicted class: {y_pred}")
 ```
 :::
 
-### 涉及函数
+## 涉及函数
 
-#### `torch.nn`
+:::note 插叙：`torch.nn`API
 
-#### `nn.Linear`
+[`torch.nn`](https://docs.pytorch.org/docs/stable/nn.html)
 
-#### `nn.ReLU`
+- Containers - 容器模块
+  >... 基础包装
+- Convolution Layers - 卷积层
+  >...  用一个小窗口（卷积核）在输入上滑动，提取局部特征。
+- Pooling Layers - 池化层
+  > 用来“浓缩”特征图，降低分辨率，减少计算量。 常见操作是取一个窗口内的最大值（MaxPool）或平均值（AvgPool）。
+- Padding Layers - 填充层
+  > 在输入数据的边界上“贴一圈”额外的值（通常是0）。 目的是控制卷积后输出的尺寸，或者防止边缘信息丢失。
+- Non-linear Activations(weighted sum, nonlinearity) - 非线性激活函数(加权求和，非线性)
+  > 最常见的激活函数，如 `nn.ReLU`、`nn.Sigmoid`、`nn.Tanh`，接在线性层后面引入非线性。
+- Non-linear Activations(other) - 非线性激活函数(其他)
+  > 一些特殊用途的激活，如 `nn.Softmax`（多分类概率归一化）、`nn.LogSoftmax`
+- Normalization Layers - 归一化层
+  > 对中间层的数据分布进行“标准化”，让均值为0、方差为1。 作用是加速训练、稳定梯度。最著名的是 `nn.BatchNorm2d`（批归一化）。
+- Recurrent Layers - 循环神经网络层
+  > 处理序列数据的核心模块，带有“记忆”功能。 你刚才问到的 `LSTM` 就在这一格。还包括 `nn.RNN`、`nn.GRU`。
+- Linear Layers - 线性层 / 全连接层
+  >  执行 `y = xW^T + b` 的线性变换。`nn.Linear` 就属于这里。它在分类器头部几乎从不缺席。
+- Dropout Layers - 随机失活层
+  > 训练时随机把一部分神经元的输出置为0。 是一种防止过拟合的“正则化”手段，强迫网络不依赖任何单个神经元。
+- Sparse Layers - 稀疏连接层
+  > 用于处理稀疏输入（比如词袋模型中的高维稀疏向量）。 典型的是 nn.Embedding，它把高维稀疏的单词索引映射成低维稠密向量。你学文本分类时第一个要打交道的层。
+- Distance Functions - 距离函数
+  > 计算两个输入之间的“距离”或“相似度”。 最典型的是 `nn.PairwiseDistance`（欧氏距离）、`nn.CosineSimilarity`（余弦相似度）。常用于度量学习或人脸验证。
+- Loss Functions - 损失函数
+  > 定义“预测值和真实值之间的差距”。 训练的目标就是最小化这个差距。你马上要用到的 `nn.CrossEntropyLoss` 就在这格。
+- Vision Layers - 视觉专用层
+  > 为计算机视觉任务量身定做的特殊层。 例如 `nn.PixelShuffle`（超分辨率上采样）、`nn.Upsample`（上采样）。
+- Shuffle Layers - 通道混洗层
+  > 将特征图的通道顺序打乱重排。 主要用于轻量化网络（如 ShuffleNet），促进不同组通道之间的信息流通。
+- DataParallel Layers (multi-GPU, distributed) - 数据并行层（多GPU，分布式）
+  > 在多个 GPU 上并行训练模型。 例如 `nn.DataParallel`、`nn.parallel.DistributedDataParallel`。你暂时用不上，但知道它属于“加速训练”的工具箱即可。
+- Utilities - 工具函数
+  > 一些辅助性操作，比如从现有参数生成新参数的 nn.ParameterList，或者把普通张量转成可学习参数的 `nn.Parameter`。
+- Quantized Functions - 量化函数
+  >用低精度（如 int8）代替 float32 进行计算，以减小模型体积、加速推理。常用于移动端部署。
+- Lazy Modules Initialization - 惰性初始化模块
+  > 允许你在不知道输入维度的情况下先定义层，等第一次数据通过时再自动推断并初始化权重。比如 `nn.LazyLinear` 替换 `nn.Linear`，就不用自己算 `28*28=784` 了。
 
-#### `nn.Sequential`
+:::
 
-#### `nn.Flatten` - 展平
 
-#### `nn.Softmax`
+### Model Layers
+
+#### [`nn.Linear`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear)
+对输入数据应用仿射线性变换：$y = xA^T + b$ .
+> Applies an affine linear transformation to the incoming data: $y = xA^T + b$ .
+<!-- > [https://docs.pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear] -->
+
+#### [`nn.ReLU`](https://docs.pytorch.org/docs/stable/generated/torch.nn.ReLU.html#torch.nn.ReLU)
+对每个元素应用ReLU函数。
+> Applies the rectified linear unit function element-wise.
+
+![](https://docs.pytorch.org/docs/stable/_images/ReLU.png)
+
+#### [`nn.Sequential`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html#torch.nn.Sequential)
+
+一个顺序容器。 ...
+
+>A sequential container.
+
+>Modules will be added to it in the order they are passed in the constructor. Alternatively, an OrderedDict of modules can be passed in. The forward() method of Sequential accepts any input and forwards it to the first module it contains. It then “chains” outputs to inputs sequentially for each subsequent module, finally returning the output of the last module.
+
+>The value a Sequential provides over manually calling a sequence of modules is that it allows treating the whole container as a single module, such that performing a transformation on the Sequential applies to each of the modules it stores (which are each a registered submodule of the Sequential).
+
+>What’s the difference between a Sequential and a torch.nn.ModuleList? A ModuleList is exactly what it sounds like–a list for storing Module s! On the other hand, the layers in a Sequential are connected in a cascading way.
+
+#### [`nn.Flatten`](https://docs.pytorch.org/docs/stable/generated/torch.nn.modules.flatten.Flatten.html#torch.nn.modules.flatten.Flatten) - 展平
+将连续的一组维度展平为一个张量。
+> Flattens a contiguous range of dims into a tensor.
+
+#### [`nn.Softmax`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Softmax.html#torch.nn.Softmax)
+对一个 n 维输入张量应用 Softmax 函数。
+对它们进行重新缩放，以使输出的 n 维张量中的元素处于 [0,1] 的范围内，并且其总和为 1。
+Softmax 的定义为：
+$$
+\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
+$$
+当输入的张量为稀疏张量时，未指定的值将被视为负无穷大。
+> Applies the Softmax function to an n-dimensional input Tensor.
+
+>Rescales them so that the elements of the n-dimensional output Tensor lie in the range [0,1] and sum to 1.
+
+>Softmax is defined as:
+
+>$$\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}$$
+
+>When the input Tensor is a sparse tensor then the unspecified values are treated as `-inf`.
 
 ### 模型参数
+- 他 (全连接的)权重 算一层, 偏置 算一层
+
+```python
+from PIL import Image
+import os
+import torch
+from torch import nn
+from torch.utils.data import Dataset, DataLoader
+import torchvision
+from torchvision import datasets, transforms
+
+device = torch.accelerator.current_accelerator().type if torch.accelerator.is_available() else 'cpu'
+print(f"使用的设备Using {device} device")
+
+class NeuralNetwork(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.flatten = nn.Flatten()
+        self.linear_relu_stack = nn.Sequential(
+            nn.Linear(28 * 28, 512),
+            nn.ReLU(),
+            nn.Linear(512, 512),
+            nn.ReLU(),
+            nn.Linear(512, 10),
+        )
+    def forward(self, x):
+        x = self.flatten(x)
+        logits = self.linear_relu_stack(x)
+        return logits
+
+model = NeuralNetwork().to(device)
+print("定义神经网络的结构model: ", model)
+
+# idx = 0
+# for name, param in model.named_parameters():
+#     print(f"({idx}): Layer: {name} \n   --Size: {param.size()} | Values : {param[:2]} \n")
+#     idx += 1
+
+print("=" * 120)
+print(" " * 50, "神经网络参数全览")
+print("=" * 120)
+
+# 用于跟踪层编号（只计数有参数的层）
+layer_idx = 0
+
+for name, param in model.named_parameters():
+    # 解析层的类型
+    if 'weight' in name:
+        layer_type = "权重矩阵"
+        # 形状含义： [本层神经元数, 前一层神经元数]
+        meaning = f"{param.size()[0]} 个神经元，每个接收 {param.size()[1]} 个输入信号"
+    elif 'bias' in name:
+        layer_type = "偏置向量"
+        # 形状含义： [本层神经元数]
+        meaning = f"{param.size()[0]} 个神经元，每个配一个偏置值"
+    else:
+        layer_type = "其他参数"
+        meaning = "—"
+
+    # 输出一行表格
+    print(f"({layer_idx}) | {name:<30} | {str(param.size()):<22} | {layer_type:<8} | {meaning}")
+    layer_idx += 1
+
+print("=" * 120)
+```
+
+:::details
+```text
+使用的设备Using cpu device
+定义神经网络的结构model:  NeuralNetwork(
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (linear_relu_stack): Sequential(
+    (0): Linear(in_features=784, out_features=512, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=512, out_features=512, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+========================================================================================================================
+                                                   神经网络参数全览
+========================================================================================================================
+(0) | linear_relu_stack.0.weight     | torch.Size([512, 784]) | 权重矩阵     | 512 个神经元，每个接收 784 个输入信号
+(1) | linear_relu_stack.0.bias       | torch.Size([512])      | 偏置向量     | 512 个神经元，每个配一个偏置值
+(2) | linear_relu_stack.2.weight     | torch.Size([512, 512]) | 权重矩阵     | 512 个神经元，每个接收 512 个输入信号
+(3) | linear_relu_stack.2.bias       | torch.Size([512])      | 偏置向量     | 512 个神经元，每个配一个偏置值
+(4) | linear_relu_stack.4.weight     | torch.Size([10, 512])  | 权重矩阵     | 10 个神经元，每个接收 512 个输入信号
+(5) | linear_relu_stack.4.bias       | torch.Size([10])       | 偏置向量     | 10 个神经元，每个配一个偏置值
+========================================================================================================================
+```
+:::
+
 
 ## 小结
 慢慢来叭.
