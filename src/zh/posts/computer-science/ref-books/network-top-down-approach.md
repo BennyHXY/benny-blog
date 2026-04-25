@@ -12,7 +12,7 @@ tag:
 
 <!-- ## 《计算机网络: 自顶向下方法》 -->
 
-<PDF url="/files/pdf/826103 计算机网络-自顶向下方法第七版_中文.pdf" />
+<PDF url="/files/pdf/826103 计算机网络-自顶向下方法第七版_中文.pdf" page ="2" ratio = 0.3 />
 
 交互演示程序:
 [https://media.pearsoncmg.com/ov2/ph/esm/ecs_kurose_compnetwork_9/cw/#interactiveanimations]
