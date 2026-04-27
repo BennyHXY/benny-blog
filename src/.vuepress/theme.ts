@@ -122,6 +122,11 @@ export default hopeTheme({
         hint: "记我与姚姑娘2026年3月一同参与华为软件精英挑战赛",
         password: "2603",
       },
+      "/zh/posts/Eng/article-reading/Annual-GDP-Accounting-Instructions-of-China":
+        {
+          hint: "What does GDP stand for?",
+          password: "Gross Domestic Product",
+        },
     },
   },
 

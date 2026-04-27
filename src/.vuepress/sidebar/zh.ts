@@ -17,6 +17,12 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
+      text: "英语",
+      // icon: "",
+      prefix: "posts/Eng/",
+      children: "structure",
+    },
+    {
       text: "算法竞赛",
       prefix: "posts/algorithm/",
       children: "structure",
