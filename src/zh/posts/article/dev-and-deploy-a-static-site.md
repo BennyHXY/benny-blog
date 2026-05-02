@@ -2,6 +2,7 @@
 title: 如何开发和部署一个静态网站
 icon: pen-to-square
 date: 2026-03-28
+star: true
 category:
   - frontend
 tag:

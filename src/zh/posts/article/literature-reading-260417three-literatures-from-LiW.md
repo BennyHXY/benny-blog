@@ -183,11 +183,23 @@ Outcome - 结局指标
  - Figure 8. Use of private and public datasets from year to year.
 ![alt text](/assets/images/article/literature-reading/NER-Rustad/export_img__页面_10_图像_0001.png)
 
+```text
+使用Public、Private两类数据集的次数随年份变化的折线图.
+```
+
  - Figure 9. Use of public and private datasets.
 ![alt text](/assets/images/article/literature-reading/NER-Rustad/export_img__页面_10_图像_0002.png) 
 
+```text
+Public、Private两类数据集使用次数的总数.
+```
+
  - Figure 10. Popular NER datasets.
 ![alt text](/assets/images/article/literature-reading/NER-Rustad/export_img__页面_10_图像_0003.png)
+
+```text
+流行NER数据集使用次数的条形图.
+```
 
 :::details from deepseek: Figure 10 数据解读：主流 NER 数据集及所属领域
 | 数据集名称 | 所属领域 | 主要实体类型 | 简要说明 |
@@ -379,6 +391,70 @@ $$
 2. **上层建筑（BERT / BiLSTM-CRF）**：随着算力增强，模型越来越**“上下文感知化”**，从静态向量进化到动态理解整句语义。
 
 :::
+
+```text
+Continuous Bag-of-Word, CBOW - 连续词袋模型
+```
+
+- 公式(4 ~ 7):
+
+$$
+P(w_t | w_{j \,(|j-t| \leq l, \, j \neq t)}) = \text{Softmax}\left(M \left( \sum_{|j-t| \leq l, \, j \neq t} W_j \right)\right) \tag{4}
+$$
+
+```text
+CBOW概率公式
+```
+
+$$
+\mathcal{L} = -\sum_{t} \log P(w_t | w_{j \,(|j-t| \leq l, \, j \neq t)}) \tag{5}
+$$
+
+```text
+CBOW损失函数
+```
+
+$$
+P(w_j | w_t) = \text{Softmax}(M w_t) \quad (|j-t| \leq l, \, j \neq t) \tag{6}
+$$
+
+```text
+Skip-gram概率公式
+```
+
+$$
+\mathcal{L} = -\sum_{t} \sum_{|j-t| \leq l, \, j \neq t} \log P(w_j | w_t) \tag{7}
+$$
+
+```text
+Skip-gram损失函数
+```
+
+:::details from_deepseek:公式阅读策略与理解检测
+
+3. **公式阅读策略**
+本节公式 (4) 到 (7) 是 Word2Vec 的数学表示。对于本科生，**不需要会手算这些公式**，但需要能解释每个公式在做什么：
+
+|公式|通俗理解|
+|---|---|
+| (4) CBOW 概率公式 | 给定周围词，猜中间词的概率 |
+| (5) CBOW 损失函数 | 猜错的惩罚有多大 |
+| (6) Skip-gram 概率公式 | 给定中间词，猜周围词的概率 |
+| (7) Skip-gram 损失函数 | 同上，求所有位置猜错的平均惩罚 |
+
+4. **读完本节后，你应该能回答**
+   1. 为什么 Word Embedding 比 One-Hot Encoding 好？（三个优点）
+   2. POS-Tagging 特征对 NER 为什么天然有帮助？
+   3. CBOW 和 Skip-gram 的核心区别是什么？
+   4. 作者为什么说 BERT 是“有前景的选择”？它解决了 Word2Vec 的什么缺陷？（提示：OOV 和多义词）
+
+
+:::
+
+
+
+
+
 
 ### 4 Conclusion
 ### 5 Discussion

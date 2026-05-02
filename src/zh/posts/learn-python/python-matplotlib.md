@@ -15,6 +15,17 @@ tag:
 tutorial:[https://matplotlib.org/stable/tutorials/index.html]
 reference:[https://matplotlib.org/stable/api/index.html]
 
+## 通用
+
+### 中文字体显示
+
+```python
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体为黑体
+plt.rcParams['axes.unicode_minus'] = False    # 解决负号显示问题
+
+```
+
+
 ## Pyplot
 
 <VPPreview>
@@ -77,3 +88,8 @@ plt.show()
 </template>
 
 </VPPreview>
+
+
+
+
+

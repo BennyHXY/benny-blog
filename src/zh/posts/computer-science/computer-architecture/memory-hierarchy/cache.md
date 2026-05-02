@@ -2,6 +2,7 @@
 title: 计组 - 高速缓存
 icon: pen-to-square
 date: 2026-04-03
+star: true
 category:
   - computer-architecture
   - memory-hierarchy

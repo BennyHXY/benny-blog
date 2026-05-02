@@ -2,6 +2,7 @@
 title: 计组 - 虚拟内存
 date: 2026-03-26
 icon: pen-to-square
+star: true
 category:
   - computer-architecture
   - memory-hierarchy
