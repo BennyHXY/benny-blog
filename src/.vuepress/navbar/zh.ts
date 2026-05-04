@@ -147,6 +147,10 @@ export const zhNavbar = navbar([
         text: "Echarts1",
         link: "echarts1",
       },
+      {
+        text: "sunflower",
+        link: "claude-sunflower",
+      },
       // {
       //   text: "苹果",
       //   icon: "pen-to-square",
