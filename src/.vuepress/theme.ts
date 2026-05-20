@@ -150,6 +150,7 @@ export default hopeTheme({
     plantuml: true,
     preview: true,
     flowchart: true,
+    revealjs: true,
     spoiler: true,
     stylize: [
       {
