@@ -302,3 +302,82 @@ def princess(nw, nb):
 print(princess(w,b))
 
 ```
+
+#### LightOJ1104 - Birthday Paradox
+
+ - [https://vjudge.net/problem/LightOJ-1104]
+
+##### 题意
+
+##### 推导
+
+
+##### 代码
+
+::: code-tabs
+
+@tab python
+
+```python
+T = int(input())
+
+for case in range(1, T + 1):
+    n = int(input())
+
+    p = 1
+    ans = 1
+    for i in range(n):
+        p = p * (n - i) / n
+        if p <= 0.5:
+            ans = i
+            break
+
+    print(f"Case {case}: {ans}")
+```
+
+
+@tab cpp
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+void solve(int ti)
+{
+	int n, ans = 1;
+	double p = 1;
+	scanf("%d", &n);
+	for(int i = 0; i <= n; ++i)
+	{
+		p *= n - i;
+		p /= n;
+		if(p <= 0.5)
+		{
+			ans = i;
+			break;
+		}
+	}
+	
+	printf("Case %d: %d\n", ti, ans);
+	
+}
+
+int main()
+{
+	int t;
+	scanf("%d", &t);
+	for(int ti = 1; ti <= t; ++ti)
+	{
+		solve(ti);
+	}
+	
+	return 0;
+} 
+```
+
+:::
+
+##### 补充: 关于时间复杂度的验算
+
