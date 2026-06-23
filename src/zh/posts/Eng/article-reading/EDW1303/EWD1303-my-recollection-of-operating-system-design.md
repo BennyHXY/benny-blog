@@ -39,7 +39,7 @@ In what follows, I shall try to provide my recollections with all the background
 
 - [[Claude - help1](Claude-help-for-EWD1303.md)]
 
-In Amsterdam, at the Mathematical Center, I started programming for binary machines for which an electric <ins>typewriter</ins> with <ins>electromagnets</ins> under the keys was the <ins>primary</ins> output device. The first machine could operate 16 keys of the typewriter: the 10 decimal digits, plus, minus, <ins>period</ins>, space, <ins>tabulate</ins> and NLCR(= New Line Carriage Return), <ins>the second one had access to the entire keyboard.</ins> $\text{\color{Blue}The type instruction pulled the key identified by the 4 (6) least significant digits of the A-register (= main Accumulator); these bits were chosen because that was the place where the conversion process from binary to decimal representation would produce each time the binary representation of the next digit to be typed.}$
+In Amsterdam, at the Mathematical Center, I started programming for binary machines for which an electric <ins>typewriter</ins> with <ins>electromagnets</ins> under the keys was the <ins>primary</ins> output device. The first machine could operate 16 keys of the typewriter: the 10 decimal digits, plus, minus, <ins>period</ins>, space, <ins>tabulate</ins> and NLCR(= New Line Carriage Return), <ins>the second one had access to the entire keyboard.</ins> he type instruction pulled the key identified by the 4 (6) least significant digits of the A-register (= main Accumulator); these bits were chosen because that was the place where the conversion process from binary to decimal representation would produce each time the binary representation of the next digit to be typed.
 
 :::note
 
@@ -134,9 +134,38 @@ To maximize throughput, we would like each reader to read at its maximum speed m
 :::
 
 
+### Pandora's box - 潘多拉的盒子
+
+Enabling the central processor to react tot the relative timing og the progress of the various communication devices created a host of new problems, so new that we didn't really know how to think and talk about them and what <ins>metaphors</ins> to use. To mention one example, people were used to view the control of the whole installation as localized in the central processor: wasn't that the component that issued its commands to the communication devices, wasn't that what the popular literature called "the electronic brain" ? Now, suddenly it looked as if the central processor might have to serve a peripheral device at its <ins>bidding</ins> ! Weren't we trying to switch from ==one master with many slaves== to ==one slave having to serve many masters== (who might give incompatible orders)? People felt like facing a ==revolution== they did not understand, Needless to say, the widespread use of <ins>anthropomorphic</ins> terminology only <ins>aggravated</ins> the situation. [Here I must confess to having <ins>prolonged</ins> the confusion somewhat by later introducing "directors" and "secretaries"; fortunately this was in a paper that has largely been ignored.]
 
 
-### Pandora's box
+In retrospect, the problems were in roughly three areas:
+ 1. The basic mechanics of switching the central processor from one task to another,
+ 2. The strategy for scheduling the central processor and the scope of its <ins>commitment</ins>,
+ 3. The logical problems that emerge when a number of resources are shared by a number of competitors,
+
+and all that without theories or agreed criteria that could assist you in your choice between the options. Those years taught me that the ability to detect <ins>timely</ins> that some theory is needed is crucial for successful software design.
+
+:::note
+
+ - anthropomorphic - 拟人化的，赋予人性的
+ - terminology - 术语
+
+
+使中央处理器能够响应各种通信设备的相对时间进度，引发了一系列新问题，这些问题如此之多，以至于我们甚至不知道该如何思考和描述它们，也不知道该使用哪些隐喻。举个例子，人们过去习惯将整个系统的控制视为集中于中央处理器：不正是这个组件向通信设备发出指令的吗？不也正是大众文学中所说的“电子大脑”吗？突然间，中央处理器似乎不得不按其意愿为一个外设服务！我们不是正试图从一个主控器控制多个从属设备，转变为一个从属设备必须为多个主控器服务（而这些主控器可能发出不兼容的指令）吗？人们感觉仿佛要面对一场自己无法理解的革命。显而易见，广泛使用拟人化的术语进一步加剧了这种混乱局面。[在此我必须承认，后来引入“导演”和“秘书”等术语，某种程度上延长了这种困惑；幸运的是，这一内容出现在一篇几乎被完全忽视的论文中。]
+
+回顾起来，问题大致集中在以下几个方面：
+1. 将中央处理器从一个任务切换到另一个任务的基本机制，  
+2. 调度中央处理器的策略及其责任范围，  
+3. 当多个资源被多个竞争者共享时所出现的逻辑问题，  
+以及所有这些内容，都缺乏理论或公认的标准来帮助你在各种选择之间做出判断。那些年教给我，<ins>及时察觉某种理论是必要的</ins>能力，对于成功的软件设计至关重要。
+
+
+
+:::
+
+
+
 
 ### An interlude
 
