@@ -149,6 +149,7 @@ The level that you reached for each game genre and type can carried over from on
 
 ### 🔻About this game
 :::center
+![](/assets/images/article/games/kairosoft/Game_Dev_Story_Banner.webp)
 <!-- [picture] -->
 Game Dev Story
 (C) Kairosoft Co., Ltd.

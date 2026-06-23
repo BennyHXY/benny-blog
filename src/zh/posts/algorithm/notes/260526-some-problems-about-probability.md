@@ -137,6 +137,8 @@ opt(s, p, q)
 
 ##### 推导
 
+![alt text](/assets/images/article/algorithm-notes/260527/a-dangerous-maze1.jpg)
+
 ##### 代码
 
 ::: code-tabs#shell
@@ -258,6 +260,11 @@ int main() {
 
 ##### 推导
 
+![alt text](/assets/images/article/algorithm-notes/260527/a-bag-of-mice-1.jpg)
+
+
+ - 代码实现用一个p数组来存一下这个princess函数的值，记忆化搜索就行了。 然后需要注意以下包里的老鼠少于两只的情况需要特判一下，不然会除到 0 .
+
 ##### 代码
 
 ```python
@@ -309,8 +316,14 @@ print(princess(w,b))
 
 ##### 题意
 
-##### 推导
+ - 当一年有 $\color{Blue}{365}$ 天的时候， 假如包括你在内的 $\color{Blue}{23}$ 人一起参加聚会， 你们中 $\color{Brown}{\text{至少有两人的生日在同一天}}$的概率刚好高过 $\color{Blue}{0.5}$ .
+ - 问一年有 $\color{Blue}{n}$ 天的时候 (例如火星，一年有 669 天)，要 $\color{Blue}{\text{多少人}}$ 一起参加聚会发生 $\color{Brown}{\text{至少有两人的生日在同一天}}$ 这个事件的概率刚好高过 $\color{Blue}{0.5}$ .
 
+
+##### 推导
+ - $P(A) = 1 - P \left( \overline{A} \right)$
+ - 设 事件 $A$ 为至少有两人的生日在同一天， 那么事件 $\overline{A}$ 就是所有人的生日都不在同一天。显然 事件$\overline{A}$ 要好算一点。
+ - 对于每个 n ，从 1 开始 枚举来多少人所有人的生日都不在同一天的概率。刚好不超过 0.5 的时候输出就可以了。 标题 "Birthday Paradox" 的含义就是来不了多少人就会达到这个0.5，所以不担心超时。
 
 ##### 代码
 
