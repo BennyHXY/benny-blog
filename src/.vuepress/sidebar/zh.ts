@@ -28,6 +28,11 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
+      text: "C/C++",
+      prefix: "posts/C-or-C++/",
+      children: "structure",
+    },
+    {
       text: "python",
       prefix: "posts/learn-python/",
       children: "structure",
