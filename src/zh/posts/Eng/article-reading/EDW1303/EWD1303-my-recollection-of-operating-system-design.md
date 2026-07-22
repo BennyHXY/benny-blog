@@ -160,8 +160,6 @@ and all that without theories or agreed criteria that could assist you in your c
 3. 当多个资源被多个竞争者共享时所出现的逻辑问题，  
 以及所有这些内容，都缺乏理论或公认的标准来帮助你在各种选择之间做出判断。那些年教给我，<ins>及时察觉某种理论是必要的</ins>能力，对于成功的软件设计至关重要。
 
-
-
 :::
 
 
