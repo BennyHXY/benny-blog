@@ -5,6 +5,7 @@ icon: pen-to-square
 category:
   - computer-architecture
   - processor
+star: true
 tag:
   - red
   - big

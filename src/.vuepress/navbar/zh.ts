@@ -71,11 +71,12 @@ export const zhNavbar = navbar([
       },
       {
         text: "计算机网络",
+        prefix: "/zh/posts/computer-science/computer-networking/",
         children: [
           "概述",
           "应用层",
-          "传输层",
-          "网络层",
+          { text: "传输层", link: "transport-layer" },
+          { text: "网络层", link: "network-layer" },
           "数据链路层",
           "物理层",
         ],
@@ -85,8 +86,8 @@ export const zhNavbar = navbar([
         prefix: "/zh/posts/computer-science/computer-architecture/",
         children: [
           {
-            text: "信息的表示和处理",
-            link: "representation-and-processing-of-information/",
+            text: "引入",
+            link: "introduction/",
           },
           { text: "处理器", link: "processor/" },
           { text: "存储器", link: "memory-hierarchy/" },
@@ -94,7 +95,16 @@ export const zhNavbar = navbar([
       },
       {
         text: "操作系统",
-        children: ["概述", "进程管理", "内存管理", "文件管理", "I/O管理"],
+        prefix: "/zh/posts/computer-science/operating-system/",
+        children: [
+          "概述",
+          "虚拟",
+          {
+            text: "并发",
+            link: "concurrency/",
+          },
+          "持久化",
+        ],
       },
     ],
   },
