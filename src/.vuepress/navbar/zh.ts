@@ -98,7 +98,7 @@ export const zhNavbar = navbar([
         prefix: "/zh/posts/computer-science/operating-system/",
         children: [
           "概述",
-          "虚拟",
+          { text: "虚拟", link: "virtualization/" },
           {
             text: "并发",
             link: "concurrency/",
